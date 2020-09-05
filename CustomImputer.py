@@ -1,5 +1,88 @@
 import pandas as pd
 
+class CheckingForValues:
+
+    def __init__(self, targetDataFrame):
+        self.targetDataFrame = targetDataFrame
+        
+
+    def Check(self, targetBrand, value=0):
+        ## Checking the missing value count
+    
+        bus = self.targetDataFrame[
+            (self.targetDataFrame['vehicleType']=='bus') &
+            (self.targetDataFrame['brand']==targetBrand) &
+            (self.targetDataFrame['price']==value)
+            ].count()
+
+        # Number of missing values for the cabrio vehicleType 
+        cabrio = self.targetDataFrame[
+            (self.targetDataFrame['vehicleType']=='cabrio') &
+            (self.targetDataFrame['brand']==targetBrand) &
+            (self.targetDataFrame['price']==value)
+            ].count()
+            
+        # Number of missing values for the coupe vehicleType 
+        coupe = self.targetDataFrame[
+            (self.targetDataFrame['vehicleType']=='coupe') &
+            (self.targetDataFrame['brand']==targetBrand) &
+            (self.targetDataFrame['price']==value)
+            ].count()
+
+        # Number of missing values for the kleinwagen (mini car) vehicleType 
+        klein = self.targetDataFrame[
+            (self.targetDataFrame['vehicleType']=='kleinwagen') &
+            (self.targetDataFrame['brand']==targetBrand) &
+            (self.targetDataFrame['price']==value)
+            ].count()
+
+        # Number of missing values for the kombi (van) vehicleType 
+        kombi = self.targetDataFrame[
+            (self.targetDataFrame['vehicleType']=='kombi') &
+            (self.targetDataFrame['brand']==targetBrand) &
+            (self.targetDataFrame['price']==value)
+            ].count()
+
+        # Number of missing values for the limusine vehicleType 
+        limo = self.targetDataFrame[
+            (self.targetDataFrame['vehicleType']=='limusine') &
+            (self.targetDataFrame['brand']==targetBrand) &
+            (self.targetDataFrame['price']==value)
+            ].count()
+
+        # Number of missing values for the suv vehicleType 
+        suv = self.targetDataFrame[
+            (self.targetDataFrame['vehicleType']=='suv') &
+            (self.targetDataFrame['brand']==targetBrand) &
+            (self.targetDataFrame['price']==value)
+            ].count()
+        
+
+        ## Creating a dataframe to store the missing values
+        df = pd.DataFrame({'Vehicle Type':
+                                            [
+                                                'bus',
+                                                'cabrio',
+                                                'coupe',
+                                                'kleinwagen',
+                                                'kombi',
+                                                'limusine',
+                                                'suv'
+                                            ],
+                            'Missing values':
+                                            [
+                                                ## accessing the values by index
+                                                bus[9],
+                                                cabrio[9],
+                                                coupe[9],
+                                                klein[9],
+                                                kombi[9],
+                                                limo[9],
+                                                suv[9]
+                                            ]
+                            })
+        return df
+
 class FillMissingValues:
     def __init__(self, sourceDataFrame, targetDataFrame):
         self.sourceDataFrame = sourceDataFrame # dataFrame from which we derive the Values
@@ -102,7 +185,7 @@ class FillMissingValues:
 
             ## Filling missing values for the vehicle Type limusine
         limo = self.targetDataFrame.loc[
-            (self.targetDataFrame['vehicleType']=='limusine') &
+            (self.targetDataFrame['vehicleType']=='limousine') &
             (self.targetDataFrame['brand']==targetBrand) &
             (self.targetDataFrame['price']==value)].index
 

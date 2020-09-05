@@ -64,12 +64,12 @@ Every Machine Learning project has it's step's so does this. The steps that we w
 
 For this project we will use:
 
-* Python 3.7.7 ()
-* Jupyter Notebook ()
-* Visual Studio Code ()
-* TensorFlow 2.1.0 ()
-* Git & GitHub ()
-* Windows Subsystem for Linux (WSL2) ()
+* Python 3.7.7 (https://www.python.org/)
+* Jupyter Notebook (https://jupyter.org/)
+* Visual Studio Code (https://code.visualstudio.com/)
+* TensorFlow 2.1.0 (https://www.tensorflow.org/)
+* Git & GitHub (https://github.com/)
+* Windows Subsystem for Linux (WSL2) (https://docs.microsoft.com/en-us/windows/wsl/wsl2-index)
 
 </br>
 
@@ -184,3 +184,8 @@ And they are:
 </br>
 
 Those are the relevant columns for us and the whole preprocessing phase will be based on them. Next up is to fill the missing values in the dataset. We will start with the most important parameter and that is price. But we can't fill every single row with a specific mean for that model, brand and vehicle Type. Will do that for the Brands that have more then 5000 listings for all the others will use <b>SimpleImputer()</b> method from <b>sklearn.preprocessing</b>. Our Average prices we have from our Tableau dashboard.
+
+After thinkering for few days with the class that is included in the commit. We finally created a method that works and replaces values with a condition we got it working and we will continue in the following days to use it to modify garbage price values.
+This was the biggest problem so far and we fixed it now. 
+
+

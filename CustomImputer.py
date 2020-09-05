@@ -59,27 +59,9 @@ class CheckingForValues:
         
 
         ## Creating a dataframe to store the missing values
-        df = pd.DataFrame({'Vehicle Type':
-                                            [
-                                                'bus',
-                                                'cabrio',
-                                                'coupe',
-                                                'kleinwagen',
-                                                'kombi',
-                                                'limusine',
-                                                'suv'
-                                            ],
-                            'Missing values':
-                                            [
-                                                ## accessing the values by index
-                                                bus[9],
-                                                cabrio[9],
-                                                coupe[9],
-                                                klein[9],
-                                                kombi[9],
-                                                limo[9],
-                                                suv[9]
-                                            ]
+        df = pd.DataFrame({'Vehicle Type':['bus', 'cabrio', 'coupe', 'kleinwagen', 'kombi', 'limusine', 'suv'],
+                           ## accessing the values by index
+                           'Missing values':[bus[9], cabrio[9], coupe[9], klein[9], kombi[9], limo[9], suv[9]]
                             })
         return df
 
@@ -190,10 +172,10 @@ class FillMissingValues:
             (self.targetDataFrame['price']==value)].index
 
         self.targetDataFrame.loc[
-            (self.targetDataFrame['vehicleType']=='limusine') &
+            (self.targetDataFrame['vehicleType']=='limousine') &
             (self.targetDataFrame['brand']==targetBrand) &
             (self.targetDataFrame['price']==value)] = self.targetDataFrame.loc[
-                (self.targetDataFrame['vehicleType']=='limusine') &
+                (self.targetDataFrame['vehicleType']=='limousine') &
                 (self.targetDataFrame['brand']==targetBrand) &
                 (self.targetDataFrame['price']==value)
             ].replace(
@@ -220,21 +202,33 @@ class FillMissingValues:
             )
         if returnArg==True:
             dataFrame = pd.DataFrame({
-                'vehicleType':['bus',
-                                'cabrio',
-                                'coupe',
-                                'kleinwagen',
-                                'kombi',
-                                'limusine',
-                                'suv'],
-                'Index':[bus,
-                        cabrio,
-                        coupe,
-                        klein,
-                        kombi,
-                        limo,
-                        suv]
+                'vehicleType':['bus', 'cabrio', 'coupe', 'kleinwagen', 'kombi', 'limusine', 'suv'],
+                'Index':[bus, cabrio, coupe, klein, kombi, limo, suv]
             })
             return dataFrame
+        else:
+            pass
+
+class FillMissingValuesPower:
+    def __init__(self, targetDataFrame, sourceDataFrame):
+        self.targetDataFrame = targetDataFrame
+        self.sourceDataFrame = sourceDataFrame
+    
+    def avgPowerInput(self, avgValue, value=0, returnArg=True):
+        
+        index = self.targetDataFrame[
+            self.targetDataFrame['powerPS']==value
+        ].index
+
+        self.targetDataFrame[
+            self.targetDataFrame['powerPS']==value
+        ] = self.targetDataFrame[
+            self.targetDataFrame['powerPS']==value
+        ].replace(
+            [value],
+            [avgValue]
+        )
+        if returnArg == True:
+            return index
         else:
             pass

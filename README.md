@@ -183,9 +183,56 @@ And they are:
 
 </br>
 
-Those are the relevant columns for us and the whole preprocessing phase will be based on them. Next up is to fill the missing values in the dataset. We will start with the most important parameter and that is price. But we can't fill every single row with a specific mean for that model, brand and vehicle Type. Will do that for the Brands that have more then 5000 listings for all the others will use <b>SimpleImputer()</b> method from <b>sklearn.preprocessing</b>. Our Average prices we have from our Tableau dashboard.
+## Prepare the data for the Machine Learning Algorithm:
+
+Those are the relevant columns for us and the whole preprocessing phase will be based on them. Next up is to fill the missing values in the dataset. We will start with the most important parameter and that is price. But we can't fill every single row with a specific mean for that model, brand and vehicle Type. Will do that for the Brands that have more then 5000 listings. Our Average prices we have from our Tableau dashboard.
 
 After thinkering for few days with the class that is included in the commit. We finally created a method that works and replaces values with a condition we got it working and we will continue in the following days to use it to modify garbage price values.
 This was the biggest problem so far and we fixed it now. 
 
+We have finished cleaning the price column with droping the remaining 6000 columns that had missing "brand, price, vehicleType" values and we could not specify them. Also we will drop the rows who had missing values in the column "vehicleType".
 
+After these modifications we will move on to fill the missing values in the next fields:
+
+<table>
+    <tr>
+        <th>Column name</th>
+        <th>Number of missing values</th>
+    </tr>
+    <tr>
+        <td>vehicleType</td>
+        <td>0</td>
+    </tr>
+    <tr>
+        <td>yearOfRegistration</td>
+        <td>0</td>
+    </tr>
+    <tr>
+        <td>gearbox</td>
+        <td>9.830</td>
+    </tr>
+    <tr>
+        <td>powerPS</td>
+        <td>24.415</td>
+    </tr>
+    <tr>
+        <td>fuelType</td>
+        <td>15.424</td>
+    </tr>
+    <tr>
+        <td>brand</td>
+        <td>0</td>
+    </tr>
+    <tr>
+        <td>notRepairedDamage</td>
+        <td>50.072</td>
+    </tr>
+    <tr>
+        <td>price</td>
+        <td>0</td>
+    </tr>
+</table>
+</br>
+
+
+We filled the missing in the power column using our custom imput class, after that we filled the gearbox and notrepaireddamaged columns with the median and we dont have any missing values outside the fueltype, we will fix that in the comming commits

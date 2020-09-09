@@ -7,6 +7,8 @@
 * [Looking at the big picture](#looking-at-the-big-picture)
 * [Get the data](#get-the-data)
 * [Discover and Visualize the data to gain insight](#discover-and-visualize-the-data-to-gain-insight)
+* [Prepare the data for the Machine Learning Algorithm](#prepare-the--data-for-the-machine-learning-algorithm)
+* [Select the model and train it](#select-the-model-and-train-it)
 
 
 ## General Info
@@ -234,5 +236,25 @@ After these modifications we will move on to fill the missing values in the next
 </table>
 </br>
 
+After checking the "repaired/damaged" column we had some garbage values, we replaced those values with 1 because we think that the cars were repaired and the people didn't want to input that. 
 
-We filled the missing in the power column using our custom imput class, after that we filled the gearbox and notrepaireddamaged columns with the median and we dont have any missing values outside the fueltype, we will fix that in the comming commits
+We filled the missing in the power column using our custom imput class, after that we filled the gearbox and notrepaireddamaged columns with the median and we dont have any missing values outside the fueltype, we will fix that in the comming commits.
+
+Now we will fix the fuelType missing values by using the <b>fillna()</b> method by pandas, and since the most frequent fuel typse are diesel (32%) and benzin (66%) the remaining missing values will be filled with them. 
+
+Our dataFrame is completly filled with values and now we proceed with spliting it to:
+1. Independent Variables (X)
+2. Dependent Variable (Y)
+
+The dataFrame is split and now we must deal with our categorical data, for that we use the <b>LabelEncoder()</b>, <b>OneHotEncoder()</b>, <b>ColumnTransformer()</b> methods to convert our categorical values to numerical values.
+
+Now that our values are encoded we just need to split our data to:
+1. Training set - 80% 
+2. Test set - 20%
+
+The only thing in this phase left to do is to scale our values and the way to achieve that is to use the <b>StandardScaler()</b> from sklearn. We scale all our dataSet and that includes the target variables.
+
+</b>
+
+## Select the model and train it
+

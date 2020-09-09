@@ -210,9 +210,8 @@ class FillMissingValues:
             pass
 
 class FillMissingValuesPower:
-    def __init__(self, targetDataFrame, sourceDataFrame):
+    def __init__(self, targetDataFrame):
         self.targetDataFrame = targetDataFrame
-        self.sourceDataFrame = sourceDataFrame
     
     def avgPowerInput(self, avgValue, value=0, returnArg=True):
         

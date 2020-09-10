@@ -267,5 +267,5 @@ In our columns we had:
 2. fuelType 6
 3. brand 40     
 
-With 53 unique values we must deal 
+With 53 unique values we must deal and will do that with the above mentioned method. 
 

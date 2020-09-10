@@ -231,3 +231,20 @@ class FillMissingValuesPower:
             return index
         else:
             pass
+
+class CustomLabelEncoder:
+    def __init__(self, dataFrame, column, brand, value):
+        self.dataFrame = dataFrame
+        self.brand = brand
+        self.value = value
+        self.column = column
+
+    #topBrands=['volksWagen','bmw','opel','mercedes_benz','audi','ford', 'renault','peugeot','fiat','seat']
+
+    def fit_transform(self):
+        self.dataFrame[self.dataFrame[self.column]==self.brand]=self.dataFrame[
+            self.dataFrame[self.column]==self.brand].replace(
+                [self.brand],
+                [self.value]
+            )
+        return 

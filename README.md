@@ -7,7 +7,7 @@
 * [Looking at the big picture](#looking-at-the-big-picture)
 * [Get the data](#get-the-data)
 * [Discover and Visualize the data to gain insight](#discover-and-visualize-the-data-to-gain-insight)
-* [Prepare the data for the Machine Learning Algorithm](#prepare-the--data-for-the-machine-learning-algorithm)
+* [Prepare the data for the Machine Learning Algorithm](#prepare-the-data-for-the-machine-learning-algorithm)
 * [Select the model and train it](#select-the-model-and-train-it)
 
 
@@ -185,7 +185,7 @@ And they are:
 
 </br>
 
-## Prepare the data for the Machine Learning Algorithm:
+## Prepare the data for the Machine Learning Algorithm
 
 Those are the relevant columns for us and the whole preprocessing phase will be based on them. Next up is to fill the missing values in the dataset. We will start with the most important parameter and that is price. But we can't fill every single row with a specific mean for that model, brand and vehicle Type. Will do that for the Brands that have more then 5000 listings. Our Average prices we have from our Tableau dashboard.
 
@@ -254,7 +254,18 @@ Now that our values are encoded we just need to split our data to:
 
 The only thing in this phase left to do is to scale our values and the way to achieve that is to use the <b>StandardScaler()</b> from sklearn. We scale all our dataSet and that includes the target variables.
 
-</b>
+</br>
 
 ## Select the model and train it
+
+We tried to build our ANN (Artificial Neural Network) and we had a big problem and it was the model was failing miserably the RMSE (Root Mean Square Error) was 78,7055 and that is not aceptable.
+
+Few days and Google searches after a found a paper weher people just encoded the top 10 categories in a column the others were left as 0. Doing that they achieved greater accuracy and better preformance.
+
+In our columns we had:
+1. vehicleType 7
+2. fuelType 6
+3. brand 40     
+
+With 53 unique values we must deal 
 
